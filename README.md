@@ -129,11 +129,11 @@ export const storage = getStorage(app);
 ## Screenshots
 
 ### Login Page
-![Login Page](https://drive.google.com/file/d/1HMR-mu88lhebSQoNyzg1RnszeDCM5aF7/view?usp=sharing)
+![Login Page](login-page.png "Login Page")
 
 
 ### Upload Page
-![Upload Page](https://drive.google.com/file/d/1SV4HZAETacCaOfXhQMCFp19D47XaRNi0/view?usp=sharing)
+![Upload Page](upload-page.png "Upload Page")
 
 ## Contributing
 
