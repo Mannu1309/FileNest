@@ -1,0 +1,68 @@
+/* Center the login form on the page */
+.login_form {
+  width: 300px;
+  padding: 20px;
+  margin: 100px auto;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Style for the input boxes */
+.input_box {
+  margin-bottom: 15px;
+}
+
+.input_box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Style for the login button */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Sign-up section styling */
+.sign-up {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.sign-up button {
+  background: none;
+  color: #4CAF50;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.sign-up button:hover {
+  color: #45a049;
+}
