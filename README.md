@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+# FileHive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple web application for uploading, storing, and managing files, similar to Google Drive. The application uses React for the frontend and Firebase for authentication and storage.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- User authentication (sign up, login, logout) using Firebase Authentication
+- Upload files to Firebase Storage
+- Display a list of uploaded files with the ability to delete files
+- Responsive design with CSS
+- Session management to ensure only logged-in users can access the upload page
+- Error handling for failed authentication
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js
+- Firebase (Authentication and Storage)
+- React Router
+- HTML/CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before you begin, ensure you have the following installed:
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) (version 14 or later)
+- [npm](https://www.npmjs.com/get-npm)
+- A Firebase project set up with Firebase Authentication and Firebase Storage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/your-username/filehive.git
+   ```
 
-### `npm run eject`
+2. Navigate to the project directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   cd filehive
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install the dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Set up Firebase:
 
-## Learn More
+   - Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
+   - Enable Email/Password authentication under the Authentication section.
+   - Set up Firebase Storage in your project.
+   - Create a `.env` file in the root of your project and add your Firebase configuration:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```env
+   REACT_APP_FIREBASE_API_KEY=your_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_app_id
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Start the development server:
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+6. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-### Analyzing the Bundle Size
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```plaintext
+filehive/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Login.js
+│   │   ├── SignUp.js
+│   │   ├── Upload.js
+│   │   ├── SessionManager.js
+│   │   └── firebase.js
+│   ├── App.js
+│   ├── index.js
+│   ├── App.css
+│   ├── Login.css
+│   └── Upload.css
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+```
 
-### Making a Progressive Web App
+## Firebase Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Create a `firebase.js` file in the `src` directory and add the following code:
 
-### Advanced Configuration
+```javascript
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getStorage } from 'firebase/storage';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
+};
 
-### Deployment
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const storage = getStorage(app);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+1. **Sign Up**: Create a new account by providing an email and password on the sign-up page.
+2. **Login**: Log in with your credentials.
+3. **Upload Files**: Upload files and view the list of uploaded files on the upload page.
+4. **Delete Files**: Remove files from storage by clicking the delete button next to each file.
+5. **Logout**: Log out from the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+
+### Login Page
+![Login Page]([https://your-image-url.com/login.png](https://drive.google.com/file/d/1HMR-mu88lhebSQoNyzg1RnszeDCM5aF7/view?usp=sharing))
+
+### Upload Page
+![Upload Page]([https://your-image-url.com/upload.png](https://drive.google.com/file/d/1SV4HZAETacCaOfXhQMCFp19D47XaRNi0/view?usp=sharing))
+
+## Contributing
+
+Feel free to contribute to this project by creating pull requests, submitting issues, or suggesting new features.
+
+## Acknowledgements
+
+- [Firebase](https://firebase.google.com/) for providing authentication and storage services.
+- [React](https://reactjs.org/) for the frontend framework.
+```
+
+### Steps to Use
+
+1. **Replace placeholders**: Replace the placeholder text (e.g., `your_api_key`, `your-username`, `your-image-url.com`) with your actual information.
+2. **Push to GitHub**: Commit your changes and push the repository to GitHub.
+
+This `README.md` file should serve as a comprehensive guide for anyone looking to understand, set up, and run your project.
