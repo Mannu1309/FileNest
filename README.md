@@ -1,4 +1,4 @@
-# FileHive
+# FileNest
 
 A simple web application for uploading, storing, and managing files, similar to Google Drive. The application uses React for the frontend and Firebase for authentication and storage.
 
@@ -33,7 +33,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/filehive.git
+   git clone https://github.com/your-username/FileNest.git
    ```
 
 2. Navigate to the project directory:
